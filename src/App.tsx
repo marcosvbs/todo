@@ -1,34 +1,46 @@
-import { PlusCircle, Clipboard } from "phosphor-react";
+import "./global.css";
+import styles from "./App.module.css";
+
+import todoLogo from "./assets/todo-logo.png";
+import clipboard from "./assets/clipboard.png";
+
+import { PlusCircle } from "phosphor-react";
 
 export function App() {
   return (
     <>
-      <header>
-        <img src="" alt="" />
+      <header className={styles.header}>
+        <img src={todoLogo} />
       </header>
 
-      <main>
-        <form>
-          <input type="text" placeholder="Adicione um nova tarefa" />
+      <main className={styles.main}>
+        <form className={styles.createNewTaskForm}>
+          <input type="text" placeholder="Adicione um nova tarefa" required />
 
           <button type="submit">
             Criar
-            <PlusCircle size={16} />
+            <PlusCircle size={20} />
           </button>
         </form>
 
-        <div>
-          <div className="taskListSummary">
-            <span className="createdTasksSummary">Tarefas criadas</span>
-            <span className="counter">0</span>
+        <div className={styles.content}>
+          <div className={styles.taskListSummary}>
+            <div>
+              <span className={styles.createdTasksSummary}>
+                Tarefas criadas
+              </span>
+              <span className={styles.counter}>0</span>
+            </div>
 
-            <span className="doneTasksSummary">Concluídas</span>
-            <span className="counter">0</span>
+            <div>
+              <span className={styles.doneTasksSummary}>Concluídas</span>
+              <span className={styles.counter}>0</span>
+            </div>
           </div>
 
-          <div className="taskList">
-            <Clipboard size={56} />
-            Você ainda não tem tarefas cadastradas <br />
+          <div className={styles.taskList}>
+            <img src={clipboard} alt="Icone de prancheta" />
+            <strong>Você ainda não tem tarefas cadastradas</strong>
             Crie tarefas e organize seus itens a fazer
           </div>
         </div>

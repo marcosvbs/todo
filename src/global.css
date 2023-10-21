@@ -1,0 +1,34 @@
+:root {
+  --gray-700: #0d0d0d;
+  --gray-600: #1a1a1a;
+  --gray-500: #262626;
+  --gray-400: #333333;
+  --gray-300: #808080;
+  --gray-200: #d9d9d9;
+  --gray-100: #f2f2f2;
+
+  --purple-400: #5e60ce;
+  --purple-200: #8284fa;
+
+  --blue-400: #1e6f9f;
+  --blue-200: #4ea8de;
+
+  --red-200: #e25858;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button,
+span {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--gray-600);
+}
