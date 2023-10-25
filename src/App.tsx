@@ -5,8 +5,18 @@ import todoLogo from "./assets/todo-logo.png";
 import clipboard from "./assets/clipboard.png";
 
 import { PlusCircle } from "phosphor-react";
+import { TaskCard } from "./components/TaskCard";
+import { useState } from "react";
+
+interface Task {
+  id: number;
+  isDone: boolean;
+  description: string;
+}
 
 export function App() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
   return (
     <>
       <header className={styles.header}>
@@ -39,9 +49,33 @@ export function App() {
           </div>
 
           <div className={styles.taskList}>
-            <img src={clipboard} alt="Icone de prancheta" />
+            {tasks.length !== 0 ? (
+              tasks.map((task) => (
+                <TaskCard
+                  key={task.id}
+                  isDone={task.isDone}
+                  description={task.description}
+                />
+              ))
+            ) : (
+              <>
+                <img src={clipboard} alt="Icone de prancheta" />
+                <strong>Você ainda não tem tarefas cadastradas</strong>
+                Crie tarefas e organize seus itens a fazer
+              </>
+            )}
+
+            {/* tasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                isDone={task.isDone}
+                description={task.description}
+              />
+            )) */}
+
+            {/* <img src={clipboard} alt="Icone de prancheta" />
             <strong>Você ainda não tem tarefas cadastradas</strong>
-            Crie tarefas e organize seus itens a fazer
+            Crie tarefas e organize seus itens a fazer */}
           </div>
         </div>
       </main>
