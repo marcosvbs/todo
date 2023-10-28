@@ -6,7 +6,7 @@ import clipboard from "./assets/clipboard.png";
 
 import { PlusCircle } from "phosphor-react";
 import { TaskCard } from "./components/TaskCard";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 interface Task {
   id: number;
@@ -16,6 +16,32 @@ interface Task {
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [newTaskDescription, setNewTaskDescription] = useState("");
+
+  function generateIdBasedOnCurrentTime() {
+    const currentTime = Date.now();
+
+    // const formatedCurrentTime = Number(currentTime);
+
+    return currentTime;
+  }
+
+  function handleCreateNewTask(event: FormEvent) {
+    event?.preventDefault();
+
+    const newTask = {
+      id: generateIdBasedOnCurrentTime(),
+      isDone: false,
+      description: newTaskDescription,
+    };
+
+    setTasks(() => [...tasks, newTask]);
+    setNewTaskDescription("");
+  }
+
+  function onChangeNewTaskDescription(event: ChangeEvent<HTMLInputElement>) {
+    setNewTaskDescription(event?.target.value);
+  }
 
   return (
     <>
@@ -24,8 +50,17 @@ export function App() {
       </header>
 
       <main className={styles.main}>
-        <form className={styles.createNewTaskForm}>
-          <input type="text" placeholder="Adicione um nova tarefa" required />
+        <form
+          className={styles.createNewTaskForm}
+          onSubmit={handleCreateNewTask}
+        >
+          <input
+            type="text"
+            placeholder="Adicione um nova tarefa"
+            required
+            value={newTaskDescription}
+            onChange={onChangeNewTaskDescription}
+          />
 
           <button type="submit">
             Criar
@@ -48,35 +83,27 @@ export function App() {
             </div>
           </div>
 
-          <div className={styles.taskList}>
-            {tasks.length !== 0 ? (
-              tasks.map((task) => (
+          {tasks.length !== 0 ? (
+            <div className={styles.taskList}>
+              {tasks.map((task) => (
                 <TaskCard
                   key={task.id}
                   isDone={task.isDone}
                   description={task.description}
                 />
-              ))
-            ) : (
-              <>
-                <img src={clipboard} alt="Icone de prancheta" />
+              ))}
+            </div>
+          ) : (
+            <div className={styles.emptyTaskList}>
+              <img src={clipboard} alt="Icone de prancheta" />
+
+              <p>
                 <strong>Você ainda não tem tarefas cadastradas</strong>
+                <br />
                 Crie tarefas e organize seus itens a fazer
-              </>
-            )}
-
-            {/* tasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                isDone={task.isDone}
-                description={task.description}
-              />
-            )) */}
-
-            {/* <img src={clipboard} alt="Icone de prancheta" />
-            <strong>Você ainda não tem tarefas cadastradas</strong>
-            Crie tarefas e organize seus itens a fazer */}
-          </div>
+              </p>
+            </div>
+          )}
         </div>
       </main>
     </>
