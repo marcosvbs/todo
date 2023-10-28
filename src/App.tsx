@@ -21,8 +21,6 @@ export function App() {
   function generateIdBasedOnCurrentTime() {
     const currentTime = Date.now();
 
-    // const formatedCurrentTime = Number(currentTime);
-
     return currentTime;
   }
 
@@ -41,6 +39,11 @@ export function App() {
 
   function onChangeNewTaskDescription(event: ChangeEvent<HTMLInputElement>) {
     setNewTaskDescription(event?.target.value);
+  }
+
+  function deleteTask(taskId: number) {
+    const tasksWithoutDeleteTask = tasks.filter((task) => task.id !== taskId);
+    setTasks(tasksWithoutDeleteTask);
   }
 
   return (
@@ -88,8 +91,10 @@ export function App() {
               {tasks.map((task) => (
                 <TaskCard
                   key={task.id}
+                  id={task.id}
                   isDone={task.isDone}
                   description={task.description}
+                  deleteTask={deleteTask}
                 />
               ))}
             </div>
