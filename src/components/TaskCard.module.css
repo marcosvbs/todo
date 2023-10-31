@@ -1,0 +1,125 @@
+.container {
+  width: 100%;
+  padding: 1rem;
+
+  background: var(--gray-500);
+
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+
+  gap: 0.75rem;
+}
+
+.description {
+  color: var(--gray-100);
+
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  flex: 1;
+}
+
+.checkButton {
+  padding: 0.25rem;
+
+  color: var(--blue-200);
+  background: none;
+
+  border: none;
+
+  border: none;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.checkButton:hover {
+  color: var(--blue-400);
+}
+
+.deleteButton {
+  padding: 0.25rem;
+
+  color: var(--gray-300);
+  background: transparent;
+
+  border: none;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background: var(--gray-400);
+  color: var(--red-200);
+}
+
+/* Done Task Styles */
+
+.doneContainer {
+  width: 100%;
+  padding: 1rem;
+
+  background: var(--gray-500);
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+
+  gap: 0.75rem;
+}
+
+.doneDescription {
+  color: var(--gray-300);
+
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  text-decoration: line-through;
+
+  flex: 1;
+}
+
+.uncheckButton {
+  padding: 0.25rem;
+
+  color: var(--purple-400);
+  background: none;
+
+  border: none;
+
+  border: none;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.uncheckButton:hover {
+  color: var(--purple-200);
+}
