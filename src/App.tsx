@@ -90,12 +90,14 @@ export function App() {
               <span className={styles.createdTasksSummary}>
                 Tarefas criadas
               </span>
-              <span className={styles.counter}>0</span>
+              <span className={styles.counter}>{tasks.length}</span>
             </div>
 
             <div>
               <span className={styles.doneTasksSummary}>Concluídas</span>
-              <span className={styles.counter}>0</span>
+              <span className={styles.counter}>
+                {tasks.filter((task) => task.isDone === true).length}
+              </span>
             </div>
           </div>
 
