@@ -46,6 +46,19 @@ export function App() {
     setTasks(tasksWithoutDeleteTask);
   }
 
+  function changeTaskStatus(taskId: number) {
+    const changedTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        task.isDone = !task.isDone;
+        return task;
+      } else {
+        return task;
+      }
+    });
+
+    setTasks([...changedTasks]);
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -95,6 +108,7 @@ export function App() {
                   isDone={task.isDone}
                   description={task.description}
                   deleteTask={deleteTask}
+                  changeTaskStatus={changeTaskStatus}
                 />
               ))}
             </div>
